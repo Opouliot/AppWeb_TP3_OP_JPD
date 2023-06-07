@@ -9,6 +9,11 @@ on:
       - tp1
   workflow_dispatch:
 
+defaults:
+  run:
+    working-directory: ./Tp1
+  
+
 jobs:
   build:
     runs-on: ubuntu-latest
