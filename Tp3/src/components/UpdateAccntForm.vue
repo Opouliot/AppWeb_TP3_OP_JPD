@@ -17,8 +17,8 @@
                 <label for="formLastName">Last Name</label>
                 <input type="text" class="form-control" id="formLastName" placeholder="Last Name">
             </div>
+            <button type="submit" class="btn btn-success">Update Profil</button>
         </form>
-        <button type="submit" class="btn btn-success">Update Profil</button>
         <button class="btn btn-primary">Update Password</button>
     </div>
 </template>
