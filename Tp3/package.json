@@ -14,6 +14,7 @@
     "bootstrap-vue": "^2.23.1",
     "pinia": "^2.0.36",
     "vue": "^3.3.4",
+    "vue-multiselect-listbox": "^0.4.5",
     "vue-router": "^4.2.0"
   },
   "devDependencies": {
