@@ -1,7 +1,7 @@
 <template>
     <div>
         <label for="deleteMovie">Delete Movie?</label>
-        <button>Delete</button>
+        <button class="btn btn-alert">Delete</button>
     </div>
 </template>
 
