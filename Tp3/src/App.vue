@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-
 import FilmDetailView from './views/FilmDetailView.vue';
 </script>
 
