@@ -1,6 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import test from './components/AddMovieForm.vue';
+import FilmDetailView from './views/FilmDetailView.vue';
+import MovieCriticForm from './components/MovieCriticForm.vue';
+import AddMovieForm from './components/AddMovieForm.vue';
 </script>
 
 <template>
