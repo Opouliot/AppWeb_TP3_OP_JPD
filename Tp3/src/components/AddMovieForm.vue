@@ -1,0 +1,54 @@
+<template>
+    <div>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="movieTitle">Movie Title</label>
+                    <input type="text" class="form-control" id="movieTitle" placeholder="Movie Title">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="releaseYear">Release Year</label>
+                    <input type="number" class="form-control" id="releaseYear" placeholder="Release Year">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="movieLength">Movie Length</label>
+                    <input type="number" class="form-control" id="movieLength" placeholder="Movie Length">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="selectRating">Rating</label>
+                    <select id="selectRating" class="form-control">
+                        <option selected>Choose...</option>
+                        <option value="PG">PG</option>
+                        <option value="PG-13">PG-13</option>
+                        <option value="R">R</option>
+                        <option value="NC-17">NC-17</option>
+                     </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="movieDescription">Description</label>
+                <textarea name="description" id="movieDescription" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="actorList">Actors</label>
+                <v-multiselect-listbox :option="[]"
+                                        :reduce-display-property="(option)=> option.first_name + ' ' + option.last_name"
+                                        :reduce-value-property="(option)=> option.id">
+                </v-multiselect-listbox>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+    </div>
+</template>
+
+<script>
+    export default {
+        
+    }
+</script>
+
+<style scoped>
+
+</style>
