@@ -1,0 +1,129 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "51815869-4327-4415-9885-00e68273778d"
+        },
+        "name": {
+            "value": "web3-tp3"
+        },
+        "location": {
+            "value": "East US"
+        },
+        "hostingPlanName": {
+            "value": "ASP-web3tp3-9d23"
+        },
+        "serverFarmResourceGroup": {
+            "value": "web3-tp3"
+        },
+        "databaseName": {
+            "value": "web3-tp3-database"
+        },
+        "ftpsState": {
+            "value": "FtpsOnly"
+        },
+        "sku": {
+            "value": "Basic"
+        },
+        "skuCode": {
+            "value": "B1"
+        },
+        "workerSize": {
+            "value": ""
+        },
+        "workerSizeId": {
+            "value": ""
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+        "linuxFxVersion": {
+            "value": "PHP|8.2"
+        },
+        "storageSizeGB": {
+            "value": 20
+        },
+        "backupRetentionDays": {
+            "value": 7
+        },
+        "geoRedundantBackup": {
+            "value": "Disabled"
+        },
+        "vmName": {
+            "value": "Standard_B1ms"
+        },
+        "vCores": {
+            "value": 2
+        },
+        "storageAutogrow": {
+            "value": "Enabled"
+        },
+        "storageIops": {
+            "value": 700
+        },
+        "publicNetworkAccess": {
+            "value": "Disabled"
+        },
+        "serverName": {
+            "value": "web3-tp3-server"
+        },
+        "serverUsername": {
+            "value": "nzjsxuozqf"
+        },
+        "serverPassword": {
+            "value": null
+        },
+        "serverEdition": {
+            "value": "Burstable"
+        },
+        "collation": {
+            "value": "utf8_general_ci"
+        },
+        "charset": {
+            "value": "utf8"
+        },
+        "vnetName": {
+            "value": "web3-tp3Vnet"
+        },
+        "privateEndpointSubnet": {
+            "value": "web3-tp3Subnet"
+        },
+        "subnetForApp": {
+            "value": "web3-tp3AppSubnet"
+        },
+        "subnetForDb": {
+            "value": "web3-tp3DbSubnet"
+        },
+        "privateEndpointNameForApp": {
+            "value": "web3-tp3AppEndpoint"
+        },
+        "privateEndpointNameForDb": {
+            "value": ""
+        },
+        "privateEndpointNameForCache": {
+            "value": "web3-tp3-cache-privateEndpoint"
+        },
+        "privateDnsZoneNameForApp": {
+            "value": "privatelink.azurewebsites.net"
+        },
+        "privateDnsZoneNameForDb": {
+            "value": "privatelink.mysql.database.azure.com"
+        },
+        "privateDnsZoneNameForCache": {
+            "value": "privatelink.redis.cache.windows.net"
+        },
+        "isVnetEnabled": {
+            "value": true
+        },
+        "isPrivateEndpointForAppEnabled": {
+            "value": false
+        },
+        "isCacheEnabled": {
+            "value": false
+        },
+        "cacheName": {
+            "value": "web3-tp3-cache"
+        }
+    }
+}
