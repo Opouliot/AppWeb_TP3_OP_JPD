@@ -1,25 +1,25 @@
 <template>
     <div>
         <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
+            <div class="form-row col-12">
+                <div class="form-group">
                     <label for="movieTitle">Movie Title</label>
                     <input type="text" class="form-control" id="movieTitle" placeholder="Movie Title">
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group">
                     <label for="releaseYear">Release Year</label>
                     <input type="number" class="form-control" id="releaseYear" placeholder="Release Year">
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group">
                     <label for="movieLength">Movie Length</label>
                     <input type="number" class="form-control" id="movieLength" placeholder="Movie Length">
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group">
                     <label for="selectRating">Rating</label>
                     <select id="selectRating" class="form-control">
-                        <option selected>Choose...</option>
+                        <option selected>Choisir...</option>
                         <option value="PG">PG</option>
                         <option value="PG-13">PG-13</option>
                         <option value="R">R</option>
@@ -44,9 +44,17 @@
 </template>
 
 <script>
-    export default {
-        
+export default {
+    name: 'AddMovieForm',
+    props: {
+        id: String
+    },
+    data() {
+        return {
+            
+        }
     }
+}
 </script>
 
 <style scoped>
