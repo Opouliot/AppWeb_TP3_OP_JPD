@@ -32,13 +32,17 @@
                 <textarea name="description" id="movieDescription" cols="30" rows="10"></textarea>
             </div>
             <div class="form-group">
-                <label for="actorList">Actors</label>
-                <v-multiselect-listbox :option="[]"
-                                        :reduce-display-property="(option)=> option.first_name + ' ' + option.last_name"
-                                        :reduce-value-property="(option)=> option.id">
-                </v-multiselect-listbox>
+                <multiselect
+                    v-model="value"
+                    placeholder="Choose actors"
+                    :filter-results="false"
+                    :min-chars="1"
+                    :resolve-on-load="false"
+                    :delay="0"
+                    :searchable="true"
+                />
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">Add Movie</button>
         </form>
     </div>
 </template>

@@ -7,10 +7,9 @@ import App from './App.vue'
 import router from './router'
 import * as Vue from 'vue'
 
-import vMultiselectListbox from 'vue-multiselect-listbox'
-import 'vue-multiselect-listbox/dist/vue-multi-select-listbox.css';
+import MultiSelect from '@vueform/multiselect'
 
-// import StarRating from 'vue-star-rating'
+import vue3StarRatings from 'vue3-star-ratings'
 // import "https://unpkg.com/vue-star-rating@next/dist/VueStarRating.umd.min.js"
 
 // Vue.component('star-rating', VueStarRating.default)
@@ -19,6 +18,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const app = createApp(App)
 
+app.component('star-rating', vue3StarRatings)
+app.component('multiselect', MultiSelect)
 app.use(createPinia())
 app.use(router)
 

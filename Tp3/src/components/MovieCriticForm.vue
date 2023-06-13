@@ -6,11 +6,18 @@
                 <textarea name="userComment" id="userComment" cols="30" rows="10"></textarea>
             </div>
             <div class="form-group">
-                <star-rating v-bind:increment="0.5"
-                             inactive-color="#000"
-                             active-color="#f00"
-                             v-bind:star-size="90">
-                </star-rating>
+                <star-rating 
+                    starSize="32"
+                    starColor="#ff9800"
+                    inactiveColor="#333333"
+                    controlBg="#2e5090"
+                    controlColor="#ffffff" 
+                    controlSize="24" 
+                    :numberOfStars="5"
+                    :step="0.5"
+                    :showControl="true" 
+                    :disableClick="true" 
+                    />
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
