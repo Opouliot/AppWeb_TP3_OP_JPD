@@ -55,7 +55,8 @@ export default {
     },
     data() {
         return {
-            
+            value: [],
+            options: ['List of actors']
         }
     }
 }
