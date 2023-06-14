@@ -1,24 +1,19 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import loginView from '@/views/LoginView.vue';
-import navbarAdmin from '@/components/NavbarAdmin.vue';
+import navbar from '@/components/Navbar.vue';
 </script>
 
 <template>
-  <navbar-admin id="nav"></navbar-admin>
-  <login-view id="main"></login-view>
+  <navbar id="navbar"></navbar>
+  <RouterView></RouterView>
 </template>
 
 <script>
 export default {
   name: 'app',
-  components: {
-    loginView: loginView
-
-  },
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   }
  }

@@ -17,17 +17,26 @@
 
 <script>
 import { useUserStore } from '@/stores/userStore.js'
+import { storeToRefs } from 'pinia'
+import router from '@/router/index.js'
 import { ref } from 'vue'
 
 
 export default {
     setup() {
         const userStore = useUserStore();
-        const email = ref("karine@email.com");
-        const password = ref("password");
+        const { info } = storeToRefs(userStore);
+        const password = ref("");
+        const email = ref(info.email);
         
         function login() {
-            let success = userStore.getToken(email.value, password.value);
+            let success = userStore.login(email.value, password.value);
+            if(success) {
+                router.push({ name: 'home' })
+            }
+            else {
+                alert("Wrong email or password")
+            }
         };
         return { email, password, login }
     }
