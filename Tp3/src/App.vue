@@ -1,17 +1,20 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import test from '@/views/LoginView.vue';
+import loginView from '@/views/LoginView.vue';
+import navbarAdmin from '@/components/NavbarAdmin.vue';
 </script>
 
 <template>
-  <test id="main"></test>
+  <navbar-admin id="nav"></navbar-admin>
+  <login-view id="main"></login-view>
 </template>
 
 <script>
 export default {
   name: 'app',
   components: {
-    test
+    loginView: loginView
+
   },
   data() {
     return {

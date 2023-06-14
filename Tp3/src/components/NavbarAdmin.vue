@@ -21,12 +21,24 @@
                 </form>
             </div>
         </nav>
+        {{ isConnected }}
     </div>
 </template>
 
 <script>
+    import { ref } from 'vue';
+    import { storeToRefs } from 'pinia'
+    import { useUserStore } from '../stores/userStore';
+
     export default {
-        
+        setup() {
+            const store = useUserStore();
+            const { isConnected } = storeToRefs(store);
+            
+            return {
+                isConnected
+            }
+        }
     }
 </script>
 

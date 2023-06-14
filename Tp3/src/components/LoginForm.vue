@@ -16,24 +16,20 @@
 </template>
 
 <script>
-import { mapStores } from 'pinia'
-import { useUserStore } from '@/stores/userStore'
+import { useUserStore } from '@/stores/userStore.js'
+import { ref } from 'vue'
 
 
 export default {
-    computed: {
-    ...mapStores(useUserStore)
-    },
-    data () {
-        return {
-            email: '',
-            password: ''
-        }
-    },
-    methods: {
-        login : () =>{
-            this.userStore.getToken(this.email, this.password);
-        }
+    setup() {
+        const userStore = useUserStore();
+        const email = ref("karine@email.com");
+        const password = ref("password");
+        
+        function login() {
+            let success = userStore.getToken(email.value, password.value);
+        };
+        return { email, password, login }
     }
 }
 </script>
