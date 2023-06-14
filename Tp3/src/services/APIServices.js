@@ -32,3 +32,5 @@ export async function postMovie(movie) {
   })
   });
 }
+
+//DELETE
