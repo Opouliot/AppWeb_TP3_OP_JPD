@@ -4,7 +4,9 @@
         <div>
             <ul class="list-group">
                 <li v-for="movie in this.filteredFilmList" v-bind:key="movie.id">
-                    <span>{{ movie.titre }}</span>
+                    <h4>{{ movie.titre }}</h4>
+                    <p>{{ movie.description.slice(0,101) + "..." }}</p>
+                    <img src="../images/imagePetite.jpg" alt="affiche du film">
                 </li>
             </ul>
             
@@ -17,6 +19,7 @@
 
 <script>
     import {getAllMovies} from "@/services/APIServices.js";
+    import {getMovie} from "@/services/APIServices.js";
 
     export default {
         data() {
@@ -27,7 +30,11 @@
         },
         methods: {
             filterMovieList(){
-                getAllMovies().then(response => response.data).then(data => { this.filteredFilmList = data; return data;} );
+                getAllMovies()
+                            .then(response => response.data)
+                            .then(data => {
+                                data.sort((a, b) => (b.id - a.id));
+                                this.filteredFilmList = data.slice(0,3)});
             }
         },
         mounted() {

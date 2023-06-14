@@ -15,6 +15,10 @@ export async function getAllMovies() {
   return await response.json();
 }
 
+export async function getMovie(id) {
+  const response = await fetch(baseURL + "films/" + id, baseHeaders);
+  return await response.json();
+}
 
 //POST
 export async function postMovie(movie) {
