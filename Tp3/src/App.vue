@@ -4,10 +4,12 @@ import test from './components/AddMovieForm.vue';
 import FilmDetailView from './views/FilmDetailView.vue';
 import MovieCriticForm from './components/MovieCriticForm.vue';
 import AddMovieForm from './components/AddMovieForm.vue';
+import LastMoviesAdded from './components/LastMoviesAdded.vue';
+
 </script>
 
 <template>
-  <test id="main"></test>
+  <LastMoviesAdded/>
 </template>
 
 <script>
