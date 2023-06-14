@@ -33,15 +33,19 @@
             </div>
             <div class="form-group">
                 <multiselect
-                    v-model="value"
-                    placeholder="Choose actors"
-                    :filter-results="false"
-                    :min-chars="1"
-                    :resolve-on-load="false"
-                    :delay="0"
-                    :searchable="true"
+                v-model="value"
+                mode="tags"
+                placeholder="Select Actors"
+                :close-on-select="false"
+                :filter-results="false"
+                :min-chars="1"
+                :resolve-on-load="false"
+                :delay="0"
+                :searchable="true"
+                :options="fetchActors"
                 />
             </div>
+            
             <button type="submit" class="btn btn-primary">Add Movie</button>
         </form>
     </div>
@@ -49,10 +53,31 @@
 
 <script>
     export default {
+        data() {
+            return {
+                value: [],
+                options: []
+            }
+        },
+        methods: {
+            async fetchActors() {
+                const response = await fetch('https://laravel-e23.herokuapp.com/api/actors');
+                const actors = await response.json();
+                console.log(actors);
+                return actors
+                }
+        },
+        computed: {
+            matchingActorNamePattern(e) {
+
+                let regex = new RegExp(this.filterName, "i");
+                return this.items.filter((e) => {
+                return regex.test(e.last_name);
+            });
+            }
+        },
         
     }
 </script>
 
-<style scoped>
-
-</style>
+<style src="@vueform/multiselect/themes/default.css"></style>
