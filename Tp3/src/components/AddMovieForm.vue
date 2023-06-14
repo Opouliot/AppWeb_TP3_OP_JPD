@@ -46,7 +46,8 @@
                 />
             </div>
 
-            <button type="submit" class="btn btn-primary" @click="getMovieDetail">Add Movie</button>
+            <button type="submit" class="btn btn-primary" @click="postMovieDetail">Add Movie</button>
+            <span id="errorMsg"></span>
         </form>
     </div>
 </template>
@@ -109,16 +110,50 @@
                 });
                 return filteredArray;
             },
-            getMovieDetail(e){
+            postMovieDetail(e){
+                let errorMsg = document.getElementById("errorMsg");
+                this.getMovieDetails();
+                console.log(this.movie);
+                e.preventDefault();
+                if(!this.checkReleaseYear())
+                {
+                    postMovie(this.movie).then((response) => {
+                        if(response.status == 200){
+                            errorMsg.innerHTML = "Movie Added";
+                            errorMsg.classList.add("text-success");
+                        }
+                        else{
+                            errorMsg.innerHTML = "Error While Adding Movie";
+                            errorMsg.classList.add("text-danger");
+                        }
+                    });
+                }
+            },
+            checkReleaseYear(){
+                let releaseYear = document.getElementById("releaseYear").value;
+                let date = new Date();
+                let errorMsg = document.getElementById("errorMsg");
+                let error = false;
+
+                if(releaseYear > date.getFullYear() || releaseYear.length < 4 || releaseYear.length > 4){
+                    document.getElementById("errorMsg").innerHTML = "Invalid Release Year";
+                    errorMsg.classList.add("text-danger");
+                    error = true;
+                }
+                else{
+                    document.getElementById("errorMsg").innerHTML = "";
+                    errorMsg.classList.remove("text-danger");
+                    error = false;
+                }
+                return error;
+            },
+            getMovieDetails(){
                 this.movie.titre = document.getElementById("movieTitle").value;
                 this.movie.annee = document.getElementById("releaseYear").value;
                 this.movie.description = document.getElementById("movieDescription").value;
                 this.movie.classement = document.getElementById("selectRating").value;
                 this.movie.longueur = parseInt(document.getElementById("movieLength").value);
                 this.movie.acteurs = this.value;
-                console.log(this.movie);
-                e.preventDefault();
-                postMovie(this.movie);
             }
         },
         created () {

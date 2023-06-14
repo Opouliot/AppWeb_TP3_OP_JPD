@@ -34,3 +34,13 @@ export async function postMovie(movie) {
 }
 
 //DELETE
+export async function deleteMovie(id) {
+  fetch(baseURL + "films/" + id,{
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      //Authorization: 'Bearer ' + token)
+    },
+  });
+}
