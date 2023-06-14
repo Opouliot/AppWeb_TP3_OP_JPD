@@ -1,5 +1,3 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -22,5 +20,4 @@ app.component('star-rating', vue3StarRatings)
 app.component('multiselect', MultiSelect)
 app.use(createPinia())
 app.use(router)
-
 app.mount('#app')
