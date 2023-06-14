@@ -3,11 +3,8 @@
         <h1>Last Movies Added</h1>
         <div>
             <ul class="list-group">
-                <li v-for="movie in filteredFilmList" v-bind:key="movie.id">
-                    <span>{{ movie.title }}</span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <li v-for="movie in this.filteredFilmList" v-bind:key="movie.id">
+                    <span>{{ movie.titre }}</span>
                 </li>
             </ul>
             
@@ -30,14 +27,12 @@
         },
         methods: {
             filterMovieList(){
-                let filteredResult = [];
-                getAllMovies().then(response => console.log(response.data)).then(data => this.filteredResult = data);
-                console.log(filteredResult);
+                getAllMovies().then(response => response.data).then(data => { this.filteredFilmList = data; return data;} );
+            }
         },
-        created () {
+        mounted() {
             this.filterMovieList();
         },
-}
     }
 </script>
 
