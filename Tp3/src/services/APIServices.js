@@ -10,6 +10,15 @@ export async function getAllActors() {
   return await response.json();
 }
 
+export async function getAllMovies() {
+  const response = await fetch(baseURL + "films", baseHeaders);
+  return await response.json();
+}
+
+export async function getMovie(id) {
+  const response = await fetch(baseURL + "films/" + id, baseHeaders);
+  return await response.json();
+}
 
 //POST
 export async function postMovie(movie) {
@@ -30,5 +39,17 @@ export async function postMovie(movie) {
       language_id: movie.langue,
       actors: movie.actors
   })
+  });
+}
+
+//DELETE
+export async function deleteMovie(id) {
+  fetch(baseURL + "films/" + id,{
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      //Authorization: 'Bearer ' + token)
+    },
   });
 }
