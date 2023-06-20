@@ -41,7 +41,6 @@
                                 this.filteredFilmList = data.slice(0,3);
                                 return this.filteredFilmList;
                             }).then(movies => {
-                                console.log(movies);
                                 movies.forEach((movie)=>{
                                     let totalScore = 0;
                                     let criticNb = 0;
@@ -52,8 +51,7 @@
                                             totalScore += parseFloat(critique.score);
                                             criticNb++;
                                         });   
-                                        console.log(totalScore/criticNb);
-                                        movie.moyenne = (totalScore/criticNb).toFixed(2);
+                                        movie.moyenne = (totalScore/criticNb).toFixed(1);
                                     });
                                 })
                                 

@@ -20,6 +20,11 @@ export async function getMovie(id) {
   return await response.json();
 }
 
+export async function getMovieActors(id) {
+  const response = await fetch(baseURL + "films/" + id + "actors", baseHeaders);
+  return await response.json();
+}
+
 //POST
 export async function postMovie(movie) {
   fetch(baseURL + "films",{
