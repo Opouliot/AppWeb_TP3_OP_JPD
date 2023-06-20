@@ -1,26 +1,21 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import test from './components/AddMovieForm.vue';
-import FilmDetailView from './views/FilmDetailView.vue';
-import MovieCriticForm from './components/MovieCriticForm.vue';
-import AddMovieForm from './components/AddMovieForm.vue';
-import LastMoviesAdded from './components/LastMoviesAdded.vue';
 
+import loginView from '@/views/LoginView.vue';
+import navbar from '@/components/Navbar.vue';
 </script>
 
 <template>
-  <LastMoviesAdded/>
+  <navbar id="navbar"></navbar>
+  <RouterView></RouterView>
+
 </template>
 
 <script>
 export default {
   name: 'app',
-  components: {
-    test
-  },
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   }
  }
