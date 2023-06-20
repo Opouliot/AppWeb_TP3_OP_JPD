@@ -6,13 +6,16 @@
                 <li v-for="movie in this.filteredFilmList" v-bind:key="movie.id">
                     <h4>{{ movie.titre }}</h4>
                     <p>{{ movie.description.slice(0,101) + "..." }}</p>
+                    <p>Rating : {{ movie.classement }}</p>
+                    <p>Length : {{ movie.longueur }} min</p>
+                    <!-- <p>{{ getMovieCriticRating(movie.id) + "/10" }} </p> -->
+                    <p>Average Critics Score : {{ movie.moyenne }}</p>
                     <img src="../images/imagePetite.jpg" alt="affiche du film">
+                    <div>
+                        <button class="btn btn-success">See Details</button>
+                    </div>
                 </li>
             </ul>
-            
-        </div>
-        <div>
-            <button class="btn btn-success" @click="filterMovieList">See Details</button>
         </div>
     </div>
 </template>
@@ -26,6 +29,7 @@
             return {
                 filteredFilmList: [],
                 movieList: [],
+                moyenne: 0
             }
         },
         methods: {
@@ -34,8 +38,27 @@
                             .then(response => response.data)
                             .then(data => {
                                 data.sort((a, b) => (b.id - a.id));
-                                this.filteredFilmList = data.slice(0,3)});
-            }
+                                this.filteredFilmList = data.slice(0,3);
+                                return this.filteredFilmList;
+                            }).then(movies => {
+                                console.log(movies);
+                                movies.forEach((movie)=>{
+                                    let totalScore = 0;
+                                    let criticNb = 0;
+                                    getMovie(movie.id).then(response => response.data)
+                                    .then(data => data.critiques)
+                                    .then(critiques => {
+                                        critiques.forEach(critique => {
+                                            totalScore += parseFloat(critique.score);
+                                            criticNb++;
+                                        });   
+                                        console.log(totalScore/criticNb);
+                                        movie.moyenne = (totalScore/criticNb).toFixed(2);
+                                    });
+                                })
+                                
+                            });
+            },
         },
         mounted() {
             this.filterMovieList();
