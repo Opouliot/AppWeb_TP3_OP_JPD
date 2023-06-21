@@ -8,11 +8,10 @@
                     <p>{{ movie.description.slice(0,101) + "..." }}</p>
                     <p>Rating : {{ movie.classement }}</p>
                     <p>Length : {{ movie.longueur }} min</p>
-                    <!-- <p>{{ getMovieCriticRating(movie.id) + "/10" }} </p> -->
                     <p>Average Critics Score : {{ movie.moyenne }}</p>
                     <img src="../images/imagePetite.jpg" alt="affiche du film">
                     <div>
-                        <button class="btn btn-success">See Details</button>
+                        <button class="btn btn-success" @click="sendMovieId(movie.id)">See Details</button>
                     </div>
                 </li>
             </ul>
@@ -29,7 +28,8 @@
             return {
                 filteredFilmList: [],
                 movieList: [],
-                moyenne: 0
+                moyenne: 0,
+                movieId: Number
             }
         },
         methods: {
@@ -41,7 +41,6 @@
                                 this.filteredFilmList = data.slice(0,3);
                                 return this.filteredFilmList;
                             }).then(movies => {
-                                console.log(movies);
                                 movies.forEach((movie)=>{
                                     let totalScore = 0;
                                     let criticNb = 0;
@@ -52,13 +51,15 @@
                                             totalScore += parseFloat(critique.score);
                                             criticNb++;
                                         });   
-                                        console.log(totalScore/criticNb);
-                                        movie.moyenne = (totalScore/criticNb).toFixed(2);
+                                        movie.moyenne = (totalScore/criticNb).toFixed(1);
                                     });
                                 })
                                 
                             });
             },
+            sendMovieId(id){
+                this.movieId = id;
+            }
         },
         mounted() {
             this.filterMovieList();
