@@ -1,5 +1,5 @@
 <template>
-    <MovieDetail ></MovieDetail> 
+    <MovieDetail movieId="$router.params.id"></MovieDetail>
 </template>
 
 <script>

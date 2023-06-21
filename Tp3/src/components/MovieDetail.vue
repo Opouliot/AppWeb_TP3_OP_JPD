@@ -42,7 +42,7 @@
             },
             getAvgCritics(){
                 let total = 0;
-                let nbCritics = critics.length;
+                let nbCritics = this.critics.length;
                 if(nbCritics >= 5){
                     this.critics.forEach(critique => {
                         total += critique.score;
@@ -65,8 +65,8 @@
         },
         mounted () {
             this.getCritics();
-            fillMovie();
-            getActors();
+            this.fillMovie();
+            this.getActors();
         },
     }
 </script>
