@@ -11,8 +11,17 @@ export async function getAllActors() {
 }
 
 export async function getAllMovies() {
+  let movies = [];
   const response = await fetch(baseURL + "films", baseHeaders);
-  return await response.json();
+  let json = await response.json();
+  let last_page = json.meta.last_page;
+  for (let i = 1; i <= last_page; i++) {
+    const response = await fetch(baseURL + "films?page=" + i, baseHeaders);
+    let json = await response.json();
+    movies = movies.concat(json.data);
+  }
+
+  return movies;
 }
 
 export async function getMovie(id) {

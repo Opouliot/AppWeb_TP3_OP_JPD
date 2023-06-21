@@ -35,7 +35,6 @@
         methods: {
             filterMovieList(){
                 getAllMovies()
-                            .then(response => response.data)
                             .then(data => {
                                 data.sort((a, b) => (b.id - a.id));
                                 this.filteredFilmList = data.slice(0,3);
@@ -47,11 +46,12 @@
                                     getMovie(movie.id).then(response => response.data)
                                     .then(data => data.critiques)
                                     .then(critiques => {
+                                        console.log(critiques);
                                         critiques.forEach(critique => {
                                             totalScore += parseFloat(critique.score);
                                             criticNb++;
                                         });   
-                                        movie.moyenne = (totalScore/criticNb).toFixed(1);
+                                        movie.moyenne = criticNb > 0 ? (totalScore/criticNb).toFixed(1) : 0;
                                     });
                                 })
                                 

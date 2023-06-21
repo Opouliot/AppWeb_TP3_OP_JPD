@@ -33,7 +33,13 @@ const router = createRouter({
       path: '/account',
       name: 'account',
       component: () => import('../views/UpdateAccntView.vue')
-    }
+    },
+    {
+      path: '/search/:searchQuery',
+      name: 'search',
+      component: () => import('../views/SearchResultView.vue'),
+      props: true
+    },
   ]
 })
 

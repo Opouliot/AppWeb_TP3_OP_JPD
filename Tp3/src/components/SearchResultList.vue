@@ -1,6 +1,6 @@
 <template>
     <div>
-        <H1>Search Results</H1>
+        <h1>Search Results</h1>
         <ul class="list-group">
             <li v-for="movie in this.filteredMovies" v-bind:key="movie.id">
                 <h4>{{ movie.titre }}</h4>
@@ -23,7 +23,7 @@
 
     export default {
         props: {
-            searchResult : String,
+            searchQuery : String,
         },
         data() {
             return {
@@ -39,7 +39,7 @@
                 this.getMovieAvgScore();
             },
             filterMovieByTitle(){
-                let regex = new RegExp(this.searchResult, "i");
+                let regex = new RegExp(this.searchQuery, "i");
                 this.movies.forEach((movie) => {
                     if(regex.test(movie.titre)){
                         this.filteredMovies.push(movie);
@@ -47,7 +47,7 @@
                 });
             },
             filterMovieByDescription(){
-                let regex = new RegExp(this.searchResult, "i");
+                let regex = new RegExp(this.searchQuery, "i");
                 this.movies.forEach((movie) => {
                     if(regex.test(movie.description)){
                         this.filteredMovies.push(movie);
@@ -75,8 +75,8 @@
             }
         },
         created () {
-            getAllMovies().then((response) => {
-                this.movies = response.data;
+            getAllMovies().then((movies) => {
+                this.movies = movies;
             });
             this.filterMovies();
         },
