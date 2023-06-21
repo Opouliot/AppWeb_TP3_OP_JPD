@@ -29,6 +29,11 @@ const router = createRouter({
       component: () => import('../views/FilmDetailView.vue'),
       props: true
     },
+    {
+      path: '/account',
+      name: 'account',
+      component: () => import('../views/UpdateAccntView.vue')
+    }
   ]
 })
 
