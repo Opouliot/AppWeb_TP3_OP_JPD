@@ -69,6 +69,8 @@ export async function postCritic(critic, filmId){
       film_id: film_id,
       score: score,
       comment: comment,
+      date: date,
+      user_name: user_name
     })
   });
 }
