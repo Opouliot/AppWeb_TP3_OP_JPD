@@ -2,12 +2,13 @@
     <div>
         <h1>{{ this.movie.titre }}</h1>
         <img src="../images/imageGrande.jpg" alt="movie poster">
-        <p>{{ getAvgCritics() }}</p>
-        <p>{{ this.critics.length }}</p>
-        <p>{{ this.movie.description }}</p>
-        <p>{{ this.movie.classement }}</p>
-        <p>{{ this.movie.longueur }}</p>
-        <p>{{ this.movie.annee }}</p>
+        <p>Critics Average : {{ getAvgCritics() }}</p>
+        <p>Number of Critics : {{ this.critics.length }}</p>
+        <p> Description: {{ this.movie.description }}</p>
+        <p>Rating : {{ this.movie.classement }}</p>
+        <p>Length : {{ this.movie.longueur }} min</p>
+        <p>Release Year : {{ this.movie.annee }}</p>
+        <p>Actors : </p>
         <ul>
             <li v-for="actor in actors">
                 <p>{{ actor.first_name }}</p>
