@@ -21,7 +21,7 @@ export async function getMovie(id) {
 }
 
 export async function getMovieActors(id) {
-  const response = await fetch(baseURL + "films/" + id + "actors", baseHeaders);
+  const response = await fetch(baseURL + "films/" + id + "/actors", baseHeaders);
   return await response.json();
 }
 
