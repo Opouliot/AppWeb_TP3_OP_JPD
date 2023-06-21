@@ -12,7 +12,7 @@
                     <p>Average Critics Score : {{ movie.moyenne }}</p>
                     <img src="../images/imagePetite.jpg" alt="affiche du film">
                     <div>
-                        <button class="btn btn-success">See Details</button>
+                        <button class="btn btn-success" @click="sendMovieId(movie)">See Details</button>
                     </div>
                 </li>
             </ul>
@@ -30,6 +30,7 @@
                 filteredFilmList: [],
                 movieList: [],
                 moyenne: 0,
+                movieId: Number
             }
         },
         methods: {
@@ -57,6 +58,9 @@
                                 
                             });
             },
+            sendMovieId(movie){
+                this.movieId = movie.id;
+            }
         },
         mounted() {
             this.filterMovieList();

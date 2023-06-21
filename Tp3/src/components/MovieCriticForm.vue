@@ -26,7 +26,11 @@
 
 <script>
     export default {
-        
+        methods: {
+            name() {
+                
+            }
+        },
     }
 </script>
 
