@@ -41,7 +41,7 @@ export async function postMovie(movie) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      //Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + token
     },
     body: JSON.stringify({
       title: movie.titre,
@@ -56,6 +56,23 @@ export async function postMovie(movie) {
   });
 }
 
+export async function postCritic(critic, filmId){
+  fetch(baseURL + "films" + filmId + "/critics",{
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token
+    },
+    body: JSON.stringify({
+      user_id: user_id,
+      film_id: film_id,
+      score: score,
+      comment: comment,
+    })
+  });
+}
+
 //DELETE
 export async function deleteMovie(id) {
   fetch(baseURL + "films/" + id,{
@@ -63,7 +80,7 @@ export async function deleteMovie(id) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      //Authorization: 'Bearer ' + token)
-    },
+      Authorization: 'Bearer ' + token
+    }
   });
 }
