@@ -27,6 +27,7 @@ const router = createRouter({
       path: '/filmDetail/:id',
       name: 'filmDetail',
       component: () => import('../views/FilmDetailView.vue'),
+      props: true
     },
   ]
 })

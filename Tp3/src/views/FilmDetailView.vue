@@ -1,5 +1,5 @@
 <template>
-    <MovieDetail ></MovieDetail> 
+    <MovieDetail :movieId="props.id"></MovieDetail>
 </template>
 
 <script>
@@ -20,7 +20,7 @@
         setup(props) {
             const userStore = useUserStore();
             const { isConnected, isAdmin } = storeToRefs(userStore);
-
+            return { isConnected, isAdmin, props };
         }
     }
 </script>
