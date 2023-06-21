@@ -1,6 +1,6 @@
 <template>
-    <!-- <NbMovieFound :movieFound="filteredMovies"></NbMovieFound> -->
-    <SearchResultList :searchQuery="searchQuery"></SearchResultList>
+    <NbMovieFound :movieFound="nbMovie"></NbMovieFound>
+    <SearchResultList :searchQuery="searchQuery" @send-nb-movie-found="setNbMovie"></SearchResultList>
 </template>
 
 <script>
@@ -20,8 +20,16 @@
         
 		setup(props) {
             let searchQuery = ref(props.searchQuery);
+            let nbMovie = ref(0);
+
+            let setNbMovie = (nb) => {
+                nbMovie.value = nb;
+            }
+
 			return {
-                searchQuery
+                searchQuery,
+                setNbMovie,
+                nbMovie
             }
 		}
 	}

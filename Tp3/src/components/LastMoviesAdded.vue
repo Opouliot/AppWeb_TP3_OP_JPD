@@ -46,7 +46,6 @@
                                     getMovie(movie.id).then(response => response.data)
                                     .then(data => data.critiques)
                                     .then(critiques => {
-                                        console.log(critiques);
                                         critiques.forEach(critique => {
                                             totalScore += parseFloat(critique.score);
                                             criticNb++;

@@ -20,7 +20,6 @@ export async function getAllMovies() {
     let json = await response.json();
     movies = movies.concat(json.data);
   }
-
   return movies;
 }
 

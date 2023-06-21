@@ -1,14 +1,19 @@
 <template>
     <div>
-        <h3>There is {{ this.movieFound.length }} movies matching your search!</h3>
+        <h3>There is {{ movieFound }} movies matching your search!</h3>
     </div>
 </template>
 
 <script>
     export default {
         props: {
-            movieFound : Array,
+            movieFound : Number,
         },
+        setup(props) {
+            return {
+                
+            }
+        }
     }
 </script>
 
