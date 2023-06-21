@@ -15,9 +15,7 @@
             </li>
         </ul>
         <div class="d-flex justify-content-center">
-            <div v-for="n in nbPage" :key="n" class="page-item">
-                <a class="page-link" href="#">{{ n }}</a>
-            </div>
+            <a v-for="n in nbPage" :key="n" class="page-item" @click.prevent="changePage(n)">{{ n }}</a>
         </div>
     </div>
 </template>
@@ -43,6 +41,12 @@
             }
         },
         methods: {
+            changePage(page) {
+                this.currentPage = page;
+                this.filteredMovies = [];
+
+                this.filterMovies();
+            },
             filterMovies() {
                 this.searchQueryClean = this.searchQuery.replace(/['"]+/g, '');
                 this.searchQueryClean = this.searchQueryClean.trim();
@@ -53,7 +57,7 @@
                 this.nbPage = Math.ceil(this.nbMovie/this.perPage);
                 this.$emit('sendNbMovieFound', this.nbMovie);
 
-                this.filteredMovies = this.filteredMovies.slice(0, 20); // a enlever si pagination
+                this.filteredMovies = this.filteredMovies.slice((this.currentPage-1)*this.perPage, this.currentPage*this.perPage);
                 this.getMovieAvgScore();
                 
             },
@@ -105,5 +109,8 @@
 </script>
 
 <style scoped>
+.page-item {
+    margin: 0 5px;
+}
 
 </style>
