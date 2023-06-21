@@ -5,7 +5,9 @@
                 <div class="d-flex" role="">
                     <RouterLink to="/"
                                 class="nav-link active p-2" aria-current="page">Home</RouterLink>
-                    <a v-if="isConnected && isAdmin" class="nav-link p-2" aria-current="page">Add Movie</a>
+                    <RouterLink v-if="isConnected && isAdmin"
+                                to="/admin"
+                                class="nav-link p-2" aria-current="page">Add Movie</RouterLink>
                     <RouterLink v-if="!isConnected"
                                 to="/login"
                                 class="nav-link p-2" aria-current="page">Login</RouterLink>

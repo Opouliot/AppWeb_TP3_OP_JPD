@@ -10,7 +10,7 @@
                 <label for="inputPassword">Password</label>
                 <input v-model="password" type="password" class="form-control" id="inputPassword" placeholder="Password" >
             </div>
-                <button type="submit" class="btn btn-primary" >Submit</button>
+                <button type="submit" class="btn btn-primary" >Se Connecter</button>
         </form>
     </div>
 </template>
