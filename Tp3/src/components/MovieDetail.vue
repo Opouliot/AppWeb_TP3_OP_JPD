@@ -23,7 +23,7 @@
 
     export default {
         props: {
-            movie: {
+            movieId: {
                 movieId: Number,
             },
         },

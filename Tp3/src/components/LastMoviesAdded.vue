@@ -8,11 +8,10 @@
                     <p>{{ movie.description.slice(0,101) + "..." }}</p>
                     <p>Rating : {{ movie.classement }}</p>
                     <p>Length : {{ movie.longueur }} min</p>
-                    <!-- <p>{{ getMovieCriticRating(movie.id) + "/10" }} </p> -->
                     <p>Average Critics Score : {{ movie.moyenne }}</p>
                     <img src="../images/imagePetite.jpg" alt="affiche du film">
                     <div>
-                        <button class="btn btn-success" @click="sendMovieId(movie)">See Details</button>
+                        <button class="btn btn-success" @click="sendMovieId(movie.id)">See Details</button>
                     </div>
                 </li>
             </ul>
@@ -58,8 +57,8 @@
                                 
                             });
             },
-            sendMovieId(movie){
-                this.movieId = movie.id;
+            sendMovieId(id){
+                this.movieId = id;
             }
         },
         mounted() {
