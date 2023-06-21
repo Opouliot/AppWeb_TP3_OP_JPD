@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form>
+        <form @submit.prevent="$emit('update')">
             <div class="form-group">
                 <label for="formUsername">Username</label>
                 <input type="text" class="form-control" id="formUsername" placeholder="Username">
@@ -25,7 +25,16 @@
 
 <script>
     export default {
-        
+        props: {
+            id: String,
+        },
+        emits: ['update'],
+        setup(props, { emit }) {
+            function update() {
+                emit('update')
+            }
+            return { update }
+        }
     }
 </script>
 
