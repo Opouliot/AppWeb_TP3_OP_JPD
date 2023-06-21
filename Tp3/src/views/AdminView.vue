@@ -1,5 +1,5 @@
 <template>
-    <MovieDetail ></MovieDetail> 
+    <AddMovieForm></AddMovieForm> 
 </template>
 
 <script>
@@ -8,19 +8,22 @@
     import router from '@/router/index.js'
 
     import { useUserStore } from '@/stores/userStore.js'
-    import MovieDetail from '@/components/MovieDetail.vue';
+    import AddMovieForm from '@/components/AddMovieForm.vue';
 
     export default {
         props: {
             id: String,
         },
         components: {
-            MovieDetail
+            AddMovieForm
         },
         setup(props) {
             const userStore = useUserStore();
             const { isConnected, isAdmin } = storeToRefs(userStore);
 
+            if(!isConnected.value || !isAdmin.value){
+                router.push({ name: 'home' });
+            }
         }
     }
 </script>
