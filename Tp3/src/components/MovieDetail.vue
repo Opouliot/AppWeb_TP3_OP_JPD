@@ -48,7 +48,7 @@
                     this.critics.forEach(critique => {
                         total += critique.score;
                     });
-                    return (total/nbCritics).toFixed(1);
+                    return movie.moyenne = criticNb > 0 ? (totalScore/criticNb).toFixed(1) : 0;
                 }
                 else{
                     return 0;
