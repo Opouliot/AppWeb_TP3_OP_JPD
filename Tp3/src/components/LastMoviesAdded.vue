@@ -29,7 +29,7 @@
             return {
                 filteredFilmList: [],
                 movieList: [],
-                moyenne: 0
+                moyenne: 0,
             }
         },
         methods: {
