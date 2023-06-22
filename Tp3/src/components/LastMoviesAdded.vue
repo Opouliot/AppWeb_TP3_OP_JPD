@@ -22,6 +22,7 @@
 <script>
     import {getAllMovies} from "@/services/APIServices.js";
     import {getMovie} from "@/services/APIServices.js";
+    import router from '@/router/index.js'
 
     export default {
         data() {
@@ -56,8 +57,8 @@
                                 
                             });
             },
-            sendMovieId(id){
-                this.movieId = id;
+            sendMovieId(p_id){
+                router.push({ name: 'filmDetail', params: { id: p_id } })
             }
         },
         mounted() {

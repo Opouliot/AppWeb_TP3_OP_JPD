@@ -34,13 +34,15 @@ export async function getMovieActors(id) {
 }
 
 //POST
-export async function postMovie(movie) {
-  fetch(baseURL + "films",{
+export async function postMovie(movie, user) {
+  console.log(movie);
+  console.log(user);
+  return fetch(baseURL + "films",{
     method: 'POST',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
+      'Authorization': 'Bearer ' + user.token
     },
     body: JSON.stringify({
       title: movie.titre,
@@ -50,38 +52,73 @@ export async function postMovie(movie) {
       length: movie.longueur,
       special_features: movie.types,
       language_id: movie.langue,
-      actors: movie.actors
+      actors: movie.acteurs
   })
   });
 }
 
-export async function postCritic(critic, filmId){
-  fetch(baseURL + "films" + filmId + "/critics",{
+export async function postCritic(critic, user){
+  return fetch(baseURL + "films/" + critic.film_id + "/critics",{
     method: 'POST',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
+      'Authorization': 'Bearer ' + user.token
     },
     body: JSON.stringify({
-      user_id: user_id,
-      film_id: film_id,
-      score: score,
-      comment: comment,
-      date: date,
-      user_name: user_name
+      user_id: critic.user_id,
+      film_id: critic.film_id,
+      score: critic.score,
+      comment: critic.comment,
+      date: critic.date,
+      user_name: critic.user_name
     })
   });
 }
 
+//PUT/PATCH
+export async function putCritic(critic, user){
+  return fetch(baseURL + "films/" + critic.film_id + "/critics/" + critic.id,{
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + user.token
+    },
+    body: JSON.stringify({
+      user_id: critic.user_id,
+      film_id: critic.film_id,
+      score: critic.score,
+      comment: critic.comment,
+      date: critic.date,
+      user_name: critic.user_name
+    })
+  });
+}
+
+export async function patchPassword(user, password){
+  return fetch(baseURL + "user/password",{
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + user.token
+    },
+    body: JSON.stringify({
+      password: password
+    })
+  });
+}
+
+
 //DELETE
-export async function deleteMovie(id) {
-  fetch(baseURL + "films/" + id,{
+export async function deleteMovie(id, user) {
+  return fetch(baseURL + "films/" + id,{
     method: 'DELETE',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
+      'Authorization': 'Bearer ' + user.token
     }
   });
 }

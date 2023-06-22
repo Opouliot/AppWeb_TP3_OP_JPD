@@ -17,6 +17,9 @@
             
             return {
             }
+        },
+        mounted(){
+            document.title = "Account Registration";
         }
     }
 </script>

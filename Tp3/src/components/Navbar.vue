@@ -14,11 +14,14 @@
                     <RouterLink v-if="!isConnected"
                                 to="/register"
                                 class="nav-link p-2" aria-current="page">Register</RouterLink>
+                    <RouterLink v-if="isConnected"
+                                to="/account"
+                                class="nav-link p-2" aria-current="page">Profil</RouterLink>
                     <a v-if="isConnected" class="nav-link p-2" aria-current="page" @click="user.logout()" href="#">Logout ({{user.info.email}})</a>
                 </div>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input v-model="queryString" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button @click.prevent="searchMovie()" class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </nav>
@@ -30,6 +33,7 @@
     import { storeToRefs } from 'pinia'
     import { useUserStore } from '../stores/userStore';
     import { RouterLink } from 'vue-router';
+    import router from '@/router/index.js'
 
     export default {
         props: {
@@ -38,8 +42,15 @@
         setup(props) {
             const user = useUserStore();
             const { isConnected, isAdmin } = storeToRefs(user);
+
+            const queryString = ref("");
+
+            let searchMovie = () => {
+                router.push({ name: 'search', params: { searchQuery: queryString.value ? queryString.value : " " } })
+            }
+
             return {
-                user, isConnected, isAdmin
+                user, isConnected, isAdmin, searchMovie, queryString
             }
         }
     }

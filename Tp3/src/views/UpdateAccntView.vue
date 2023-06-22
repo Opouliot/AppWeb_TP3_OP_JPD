@@ -24,7 +24,11 @@
             return {
                 callback
             }
-        }
+        },
+        mounted(){
+            document.title = "Account Information Update";
+        },
+        
     }
 </script>
 

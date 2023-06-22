@@ -15,7 +15,10 @@ export default {
   data() {
     return {
     }
-  }
+  },
+  mounted(){
+            document.title = "Login Page";
+        }
  }
 </script>
 

@@ -24,6 +24,9 @@
             if(!isConnected.value || !isAdmin.value){
                 router.push({ name: 'home' });
             }
+        },
+        mounted(){
+            document.title = "Administrator's Quarters";
         }
     }
 </script>

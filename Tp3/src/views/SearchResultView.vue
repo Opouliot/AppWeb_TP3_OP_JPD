@@ -31,7 +31,10 @@
                 setNbMovie,
                 nbMovie
             }
-		}
+		},
+        mounted(){
+            document.title = "Search Results";
+        }
 	}
 </script>
 

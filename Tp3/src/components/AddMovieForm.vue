@@ -56,8 +56,14 @@
     import {getAllActors} from "@/services/APIServices.js";
     import {postMovie} from "@/services/APIServices.js";
 
+    import { ref } from 'vue'
+    import { storeToRefs } from 'pinia'
+    import { useUserStore } from '@/stores/userStore.js'
+
     export default {
         data() {
+            let userStore = useUserStore();
+            const { info } = storeToRefs(userStore);
             return {
                 value: [],
                 options: [],
@@ -69,11 +75,12 @@
                     description: "",
                     classement: "",
                     longueur: Number,
-                    types: null,
+                    types: "movies",
                     langue : 1,
                     image: null,
                     acteurs: []
-                }
+                },
+                currentUser : info
             }
         },
         methods: {
@@ -117,8 +124,8 @@
                 e.preventDefault();
                 if(!this.checkReleaseYear())
                 {
-                    postMovie(this.movie).then((response) => {
-                        if(response.status == 200){
+                    postMovie(this.movie, this.currentUser).then((response) => {
+                        if(response.ok){
                             errorMsg.innerHTML = "Movie Added";
                             errorMsg.classList.add("text-success");
                         }

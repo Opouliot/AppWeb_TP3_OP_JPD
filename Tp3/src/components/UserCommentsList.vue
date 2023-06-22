@@ -14,13 +14,20 @@
 <script>
     import {getMovie} from "@/services/APIServices.js"
 
+    import { ref } from 'vue'
+    import { storeToRefs } from 'pinia'
+    import { useUserStore } from '@/stores/userStore.js'
+
     export default {
         props: {
-            movieId: Number
+            movieId: String
         },
         data() {
+            let userStore = useUserStore();
+            const { info } = storeToRefs(userStore);
             return {
-                movieCritic: [],
+                movieCritics: [],
+                currentUser : info
             }
         },
         methods: {
@@ -30,10 +37,11 @@
             getMovie(this.movieId).then(response => response.data)
                                   .then(data => data.critiques)
                                   .then(critiques => {
-                                    critiques.forEach(critique => {
-                                        if(critique.user_id != this.$store.state.user.id)
-                                            this.movieCritic.push(critique);
+                                    critiques.sort((a,b) => new Date(b.date) - new Date(a.date)).forEach(critique => {
+                                        if(critique.user_id != this.currentUser.id)
+                                            this.movieCritics.push(critique);
                                     });
+                                    
                                   });
         }
 }   

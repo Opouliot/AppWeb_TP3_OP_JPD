@@ -15,18 +15,26 @@
                 <p>{{ actor.last_name }}</p>
             </li>
         </ul>
+        <DeleteMovie  v-if="isAdmin" :movieId="movieId"></DeleteMovie>
     </div>
 </template>
 
 <script>
     import {getMovie} from "@/services/APIServices.js"
     import { getMovieActors } from "@/services/APIServices.js";
+    import DeleteMovie from "@/components/DeleteMovie.vue";
 
     export default {
+        components: {
+            DeleteMovie
+        },
         props: {
             movieId: {
                 movieId: Number,
             },
+            isAdmin: {
+                isAdmin: Boolean,
+            }
         },
         data() {
             return {

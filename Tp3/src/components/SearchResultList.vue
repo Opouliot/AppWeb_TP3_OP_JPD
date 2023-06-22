@@ -33,7 +33,7 @@
                 movies: [],
                 filteredMovies: [],
                 movieId: Number,
-                searchQueryClean: String,
+                searchQueryClean: this.searchQuery,
                 nbMovie : Number,
                 currentPage: 1,
                 perPage: 5,
@@ -48,7 +48,7 @@
                 this.filterMovies();
             },
             filterMovies() {
-                this.searchQueryClean = this.searchQuery.replace(/['"]+/g, '');
+                this.searchQueryClean = this.searchQueryClean.replace(/['"]+/g, '');
                 this.searchQueryClean = this.searchQueryClean.trim();
                 
                 this.filterMovieByTitle();
@@ -104,8 +104,13 @@
             }).then(() => {
                 this.filterMovies();
             });
-        },
-    }
+            this.$watch(()=>this.$route.params, ()=>{
+                this.searchQueryClean = this.$route.params.searchQuery;
+                this.filteredMovies = [];
+                this.filterMovies();
+            });
+        }
+    };
 </script>
 
 <style scoped>

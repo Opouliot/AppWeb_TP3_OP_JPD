@@ -16,7 +16,10 @@
 		},
 		setup() {
 			return {}
-		}
+		},
+		mounted(){
+            document.title = "Home";
+        }
 	}
 </script>
 
